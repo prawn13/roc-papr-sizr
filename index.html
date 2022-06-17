@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>  
+    <script>
+        function game() {
+            let player = 0;
+            let comp = 0;
+            
+            for (let i = 0; i < 5; i++) {
+                winner = play(prompt("rock, paper, scissors!"));
+                if (winner == 'player') {
+                    player++;
+                }
+                else if (winner == "comp")  {
+                    comp++;
+                }
+            }
+
+            console.log("The final score was " + player + " - computer " + comp + ".");
+        }
+        
+        function computerPlay() {
+            let move = ['rock', 'paper', 'scissors'];
+            let rand = Math.floor((Math.random() * 3));
+            return move[rand];
+        }
+
+        function play(playerMove, compMove = computerPlay()) {
+            playerMove = playerMove.toLowerCase();
+            console.log("u played " + playerMove);
+            console.log("computer played " + compMove);
+            winner = evaluateWinner(playerMove, compMove);
+            console.log(winner + " wins... the current score is player " + player + " - computer " + comp + ".");
+
+        }
+
+        // returns the winner of the round
+        function evaluateWinner(player, comp)   {
+            if (player == comp) {
+
+            }
+
+        }
+
+        
+        game();
+    </script>
+</body>
+</html>
