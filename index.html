@@ -9,21 +9,28 @@
 </head>
 <body>  
     <script>
+        let move = ['rock', 'paper', 'scissors'];
+        
         function game() {
             let player = 0;
             let comp = 0;
             
-            for (let i = 0; i < 5; i++) {
+            while (player + comp < 5)   {
                 winner = play(prompt("rock, paper, scissors!"));
                 if (winner == 'player') {
                     player++;
+                    console.log(winner + " wins... the current score is player " + player + " - computer " + comp + ".");
                 }
                 else if (winner == "comp")  {
                     comp++;
+                    console.log(winner + " wins... the current score is player " + player + " - computer " + comp + ".");
+                }
+                else    {
+                    console.log("it's a tie!");
                 }
             }
 
-            console.log("The final score was " + player + " - computer " + comp + ".");
+            console.log("The final score was " + player + " - computer " + comp + ". good job everyone : )");
         }
         
         function computerPlay() {
@@ -34,19 +41,30 @@
 
         function play(playerMove, compMove = computerPlay()) {
             playerMove = playerMove.toLowerCase();
-            console.log("u played " + playerMove);
-            console.log("computer played " + compMove);
-            winner = evaluateWinner(playerMove, compMove);
-            console.log(winner + " wins... the current score is player " + player + " - computer " + comp + ".");
-
+            if (!move.includes(playerMove)) {
+                play(prompt("try again? rock, paper, scissors!"), computerPlay());
+            }
+            else    {
+                console.log("u played " + playerMove);
+                console.log("computer played " + compMove);
+                return evaluateWinner(playerMove, compMove);
+            }
         }
 
         // returns the winner of the round
         function evaluateWinner(player, comp)   {
+            player = move.indexOf(player);
+            comp = move.indexOf(comp);
+
             if (player == comp) {
-
+                return 'tie';
             }
-
+            else if (player - comp == 1 || player - comp == -2)  {
+                return 'player';
+            }
+            else{
+                return 'comp';
+            }
         }
 
         
