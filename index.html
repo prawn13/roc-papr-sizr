@@ -4,34 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>roc paper sizr !!</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>  
+   
+    <div class="container">
+        <div class="buttons">
+            <button class="rock">roc</button>
+            <button class="paper">papr</button>
+            <button class="scissors">sizr</button>
+        </div>
+
+        <div class="text">
+            <div class="result"></div>
+            <span class="winner"></span>
+            <div class="score"></div>
+        </div>
+    </div>
+
     <script>
         let move = ['rock', 'paper', 'scissors'];
-        
-        function game() {
-            let player = 0;
-            let comp = 0;
-            
-            while (player + comp < 5)   {
-                winner = play(prompt("rock, paper, scissors!"));
-                if (winner == 'player') {
-                    player++;
-                    console.log(winner + " wins... the current score is player " + player + " - computer " + comp + ".");
-                }
-                else if (winner == "comp")  {
-                    comp++;
-                    console.log(winner + " wins... the current score is player " + player + " - computer " + comp + ".");
-                }
-                else    {
-                    console.log("it's a tie!");
-                }
-            }
 
-            console.log("The final score was " + player + " - computer " + comp + ". good job everyone : )");
-        }
+        const roc = document.querySelector('.rock');
+        const papr = document.querySelector('.paper');
+        const sizr = document.querySelector('.scissors');
+        const result = document.querySelector('.result');
+        const score = document.querySelector('.score');
+        const winner = document.querySelector('.winner');
+
+        roc.addEventListener('click', function() {play('rock', computerPlay())});
+        papr.addEventListener('click', function() {play('paper', computerPlay())});
+        sizr.addEventListener('click', function() {play('scissors', computerPlay())});
+        
+        let playerScore = 0;
+        let compScore = 0;
         
         function computerPlay() {
             let move = ['rock', 'paper', 'scissors'];
@@ -40,35 +48,32 @@
         }
 
         function play(playerMove, compMove = computerPlay()) {
-            playerMove = playerMove.toLowerCase();
-            if (!move.includes(playerMove)) {
-                play(prompt("try again? rock, paper, scissors!"), computerPlay());
-            }
-            else    {
-                console.log("u played " + playerMove);
-                console.log("computer played " + compMove);
-                return evaluateWinner(playerMove, compMove);
-            }
+            result.innerText = "u played " + playerMove + ", && computer played " + 
+                compMove + "... the winner is ! ";
+            winner.innerText = evaluateWinner(playerMove, compMove);
         }
 
         // returns the winner of the round
         function evaluateWinner(player, comp)   {
             player = move.indexOf(player);
             comp = move.indexOf(comp);
+            let winner = '';
 
             if (player == comp) {
-                return 'tie';
+                winner = 'TIE';
             }
             else if (player - comp == 1 || player - comp == -2)  {
-                return 'player';
+                playerScore += 1;
+                winner = 'PLAYER';
             }
             else{
-                return 'comp';
+                compScore += 1;
+                winner = 'COMP';
             }
-        }
 
-        
-        game();
+            score.innerText = "current score : player/" + playerScore + " \n computer/" + compScore;
+            return winner;
+        }
     </script>
 </body>
 </html>
