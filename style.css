@@ -1,0 +1,56 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 30px;
+    background-color: rgb(210, 68, 68);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(210, 68, 68);
+    padding: 30px;
+    gap: 300px;
+    flex: 1;
+}
+
+.text   {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button{
+    background-color: rgb(201, 97, 0);
+    border-radius: 20px;
+    size: 390px;
+    padding: 50px;
+    font-size: 80px;
+    color: rgb(255, 255, 0);
+}
+
+.result, 
+.score {
+    font-size: 50px;
+    font-family: 'Comic Sans MS';
+    text-align: center;
+    flex: 1;
+}
+
+.result{    
+    color:rgb(165, 3, 3);
+}
+
+.score{
+    color:rgb(105, 169, 16)
+}
+
+span{
+    font-size: 90px;
+    color:rgb(5, 50, 89);
+    font-family: 'Brush Script MT';
+    text-align: center;
+}
